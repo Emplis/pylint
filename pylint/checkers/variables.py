@@ -2690,10 +2690,7 @@ class VariablesChecker(BaseChecker):
             overridden = overridden_method(klass, node.name)
             if overridden is not None and name in overridden.argnames():
                 return
-            if node.name in utils.PYMETHODS and node.name not in (
-                "__init__",
-                "__new__",
-            ):
+            if node.name in utils.PYMETHODS and node.name != "__init__":
                 return
         # Don't check callback arguments
         if any(
